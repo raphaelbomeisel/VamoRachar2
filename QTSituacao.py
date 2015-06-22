@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'LayoutVR.ui'
+# Form implementation generated from reading ui file 'QTSituacao.ui'
 #
-# Created: Thu Jun 18 16:30:26 2015
+# Created: Sun Jun 21 15:26:57 2015
 #      by: PyQt4 UI code generator 4.10.4
 #
 # WARNING! All changes made in this file will be lost!
 
+import sys
 from PyQt4 import QtCore, QtGui
 
 try:
@@ -26,13 +27,13 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(598, 392)
+        MainWindow.resize(601, 457)
         font = QtGui.QFont()
         font.setFamily(_fromUtf8("Century Gothic"))
         MainWindow.setFont(font)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
-        #self.label = QtGui.QLabel(self.centralwidget)
+        self.label = QtGui.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(20, 10, 141, 21))
         font = QtGui.QFont()
         font.setFamily(_fromUtf8("Century Gothic"))
@@ -82,10 +83,13 @@ class Ui_MainWindow(object):
         self.label_4 = QtGui.QLabel(self.centralwidget)
         self.label_4.setGeometry(QtCore.QRect(20, 110, 111, 20))
         self.label_4.setObjectName(_fromUtf8("label_4"))
+        
         self.progressBar = QtGui.QProgressBar(self.centralwidget)
         self.progressBar.setGeometry(QtCore.QRect(20, 170, 118, 23))
         self.progressBar.setProperty("value", 24)
         self.progressBar.setObjectName(_fromUtf8("progressBar"))
+               
+          
         self.label_5 = QtGui.QLabel(self.centralwidget)
         self.label_5.setGeometry(QtCore.QRect(20, 140, 181, 31))
         font = QtGui.QFont()
@@ -96,7 +100,7 @@ class Ui_MainWindow(object):
         self.label_5.setFont(font)
         self.label_5.setObjectName(_fromUtf8("label_5"))
         self.label_6 = QtGui.QLabel(self.centralwidget)
-        self.label_6.setGeometry(QtCore.QRect(320, 240, 221, 21))
+        self.label_6.setGeometry(QtCore.QRect(320, 310, 221, 21))
         font = QtGui.QFont()
         font.setFamily(_fromUtf8("Century Gothic"))
         font.setPointSize(12)
@@ -105,23 +109,28 @@ class Ui_MainWindow(object):
         self.label_6.setFont(font)
         self.label_6.setObjectName(_fromUtf8("label_6"))
         self.listView_2 = QtGui.QListView(self.centralwidget)
-        self.listView_2.setGeometry(QtCore.QRect(320, 260, 261, 71))
+        self.listView_2.setGeometry(QtCore.QRect(320, 330, 261, 71))
         self.listView_2.setObjectName(_fromUtf8("listView_2"))
+        
         self.pushButton = QtGui.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(20, 250, 241, 81))
+        self.pushButton.setGeometry(QtCore.QRect(10, 320, 241, 81))
         font = QtGui.QFont()
         font.setPointSize(12)
         self.pushButton.setFont(font)
         self.pushButton.setObjectName(_fromUtf8("pushButton"))
+        self.pushButton.clicked.connect(self.btn)
+        
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 598, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 601, 21))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         self.menuTEST = QtGui.QMenu(self.menubar)
         self.menuTEST.setObjectName(_fromUtf8("menuTEST"))
+        
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtGui.QStatusBar(MainWindow)
         self.statusbar.setObjectName(_fromUtf8("statusbar"))
+       
         MainWindow.setStatusBar(self.statusbar)
         self.actionCLIENTE = QtGui.QAction(MainWindow)
         self.actionCLIENTE.setObjectName(_fromUtf8("actionCLIENTE"))
@@ -139,11 +148,11 @@ class Ui_MainWindow(object):
         self.menuTEST.addAction(self.actionSitua_o_Mesas)
         self.menuTEST.addAction(self.actionFila_Clientes)
         self.menubar.addAction(self.menuTEST.menuAction())
-       # self.pushButton.clicked.connect(abrir_janela)
+
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-       # self.label_7=
-        print(type(self.listView.create(self.label)))
+
+        
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "Vamo Rachar?", None))
         self.label.setText(_translate("MainWindow", "Escolha sua mesa", None))
@@ -165,8 +174,20 @@ class Ui_MainWindow(object):
         self.actionFila_Clientes.setText(_translate("MainWindow", "Fila Clientes", None))
 
 
+    def tempoentrega(self):
+        self.completed=0
+        
+        while self.completed<100:
+            self.completed += 0.001
+            self.progress.setValue(self.completed)
+    
+    def btn(self):
+        
+        MainWindow.close()
+            
+
 if __name__ == "__main__":
-    import sys
+
     app = QtGui.QApplication(sys.argv)
     MainWindow = QtGui.QMainWindow()
     ui = Ui_MainWindow()
